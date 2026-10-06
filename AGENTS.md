@@ -2,7 +2,9 @@
 
 ## 1. Project Identity
 
-VOID STRAIN is a 2D Metroidvania made with Godot 4.x and GDScript.
+VOID STRAIN is a **2.5D Metroidvania** made with Godot 4.x and GDScript.
+
+The world is rendered in 3D, but core player traversal is constrained to a side-scrolling gameplay plane.
 
 Primary design pillars:
 
@@ -11,6 +13,7 @@ Primary design pillars:
 3. Ability gating that changes how old spaces are understood.
 4. Strong environmental storytelling with minimal exposition.
 5. Compact scope and high polish over content quantity.
+6. Stylized 3D presentation with strong atmosphere and readable silhouettes.
 
 Do not expand the project scope without an explicit request.
 
@@ -19,6 +22,11 @@ Do not expand the project scope without an explicit request.
 - Engine: Godot 4.x stable.
 - Language: GDScript only unless explicitly requested otherwise.
 - Target platform: Windows first.
+- Rendering: 3D.
+- Gameplay presentation: 2.5D side-scroller.
+- Core player body: CharacterBody3D.
+- Camera: Camera3D.
+- Player gameplay movement is constrained to a defined side-scrolling plane.
 - Prefer native Godot systems over third-party frameworks.
 - Avoid unnecessary addons.
 - Do not introduce C#, C++, GDExtension, or external runtimes without explicit approval.
@@ -32,8 +40,10 @@ Use the following structure when applicable:
 assets/
   audio/
   fonts/
-  sprites/
-  tilesets/
+  materials/
+  models/
+  textures/
+  vfx/
 
 docs/
 
@@ -57,7 +67,29 @@ tests/
 
 Do not create deeply nested folders without a clear reason.
 
-## 4. Architecture Rules
+## 4. 2.5D Gameplay Rules
+
+The project is visually 3D but mechanically side-scrolling.
+
+Unless a feature explicitly requires depth movement:
+
+- Player locomotion occurs on X/Y.
+- Z movement should be constrained or corrected to the active gameplay plane.
+- Enemies intended for the same lane should obey the same gameplay-plane constraint.
+- Camera movement should reinforce side-scrolling readability.
+- Background and foreground objects may use full 3D depth for composition, parallax, lighting, and atmosphere.
+- Do not turn ordinary traversal into free-roaming 3D movement.
+
+Depth may still be used for:
+
+- visual composition
+- cinematic camera moves
+- foreground/background staging
+- boss presentation
+- environmental effects
+- limited scripted transitions
+
+## 5. Architecture Rules
 
 ### Player
 
@@ -67,13 +99,25 @@ Separate responsibilities when they become non-trivial:
 
 - input
 - locomotion
+- gameplay-plane constraint
 - combat
 - health/damage
 - abilities
 - animation
 - interaction
+- camera coordination
 
 Prefer composition and small components over large inheritance trees.
+
+### Animation
+
+The player and major enemies are expected to use 3D skeletal animation.
+
+Do not bake gameplay logic into animation clips.
+
+Gameplay state should drive animation, not the other way around.
+
+Use AnimationTree / state-machine-style control where appropriate.
 
 ### Abilities
 
@@ -84,7 +128,7 @@ Examples:
 - Charge Beam
 - Dash
 - Air Dash
-- Sphere Form
+- Sphere / Compact Form if retained
 - Environmental Protection
 - Phase Shift
 
@@ -105,6 +149,7 @@ Enemies should share reusable components where sensible:
 - patrol/navigation
 - contact damage
 - projectile firing
+- gameplay-plane constraint
 
 Enemy-specific behavior should remain local to the enemy.
 
@@ -114,19 +159,19 @@ Rooms and transitions must be reusable.
 
 Avoid room scripts that directly depend on one specific global progression sequence unless required by design.
 
-## 5. Coding Rules
+## 6. Coding Rules
 
 - Use typed GDScript where practical.
 - Use descriptive English identifiers.
 - Keep functions small and single-purpose.
 - Avoid unexplained magic numbers; expose tuning values with `@export` where useful.
 - Prefer signals for loosely coupled events.
-- Do not use `get_node("../../../../")` style fragile paths.
+- Do not use fragile deep node paths.
 - Avoid global singletons unless the data is genuinely global.
 - Comment intent, not obvious syntax.
 - Do not rewrite working systems merely for stylistic preference.
 
-## 6. AI Change Discipline
+## 7. AI Change Discipline
 
 For every task:
 
@@ -140,7 +185,7 @@ For every task:
 
 When a task is ambiguous, prefer the interpretation that changes the least code and scope.
 
-## 7. Validation
+## 8. Validation
 
 After changes, perform the strongest available validation.
 
@@ -161,7 +206,7 @@ If a runnable test scene exists, use it when appropriate.
 
 Never claim a change works in-game if it has not actually been executed.
 
-## 8. Git Discipline
+## 9. Git Discipline
 
 - Keep commits focused.
 - Do not commit generated caches or editor metadata.
@@ -169,7 +214,7 @@ Never claim a change works in-game if it has not actually been executed.
 - Do not rewrite history unless explicitly requested.
 - Avoid large binary assets until they are actually needed.
 
-## 9. Design Authority
+## 10. Design Authority
 
 The documents under `docs/` define the current intended game design.
 
@@ -179,7 +224,7 @@ If code and design documents conflict:
 2. identify the conflict;
 3. preserve current behavior unless explicitly instructed to change it.
 
-## 10. Scope Guardrails
+## 11. Scope Guardrails
 
 The initial target is approximately:
 
@@ -194,9 +239,8 @@ Do not turn VOID STRAIN into:
 - an open-world game
 - a procedural roguelike
 - a multiplayer game
-- a 3D game
+- a free-roaming 3D exploration game
 - a live-service project
 - a 15+ hour campaign
 
 unless explicitly directed.
-
