@@ -1,8 +1,10 @@
-# VOID STRAIN / 虚空菌株 — Game Design Document v0.1
+# VOID STRAIN / 虚空菌株 — Game Design Document v0.2
 
 ## 1. High Concept
 
-VOID STRAIN is a compact 2D science-fiction Metroidvania centered on isolation, exploration, biomechanical horror, and mastery of movement.
+VOID STRAIN is a compact **2.5D science-fiction Metroidvania** centered on isolation, exploration, biomechanical horror, and mastery of movement.
+
+The game uses stylized 3D characters and environments while keeping core traversal constrained to a side-scrolling plane.
 
 The player explores Erebus-9, a failed research and extraction world where industrial infrastructure, alien biology, and an adaptive fungal organism have merged into a single hostile ecosystem.
 
@@ -17,7 +19,36 @@ The player should feel like:
 - a hunter whose mobility and combat vocabulary steadily expands;
 - an investigator reconstructing events through places rather than exposition.
 
-## 3. Core Pillars
+## 3. Visual Direction
+
+### Rendering Style
+
+- stylized 3D
+- 2.5D side-scrolling gameplay
+- strong silhouettes
+- readable combat staging
+- atmospheric lighting
+- emissive accents
+- fog, particles, dust, spores, heat haze, and environmental VFX
+- detailed environments without photorealistic asset demands
+
+### Production Principle
+
+The project should avoid AAA realism.
+
+Asset quality should come primarily from:
+
+- silhouette
+- lighting
+- material contrast
+- modular environment construction
+- camera composition
+- VFX
+- coherent color direction
+
+rather than ultra-dense geometry or expensive texture detail.
+
+## 4. Core Pillars
 
 ### Exploration
 
@@ -65,7 +96,7 @@ Story delivery should favor:
 
 - architecture
 - machinery
-- corpses/remains
+- bodies/remains
 - damaged laboratories
 - containment failures
 - environmental changes
@@ -73,7 +104,7 @@ Story delivery should favor:
 
 Long mandatory dialogue should be rare.
 
-## 4. Scope
+## 5. Scope
 
 Target first complete release:
 
@@ -85,7 +116,7 @@ Target first complete release:
 - optional upgrades and sequence breaks
 - Windows first
 
-## 5. World
+## 6. World
 
 Planet / installation: **Erebus-9**
 
@@ -103,14 +134,7 @@ Visual language:
 - emergency lighting
 - rain / leaking coolant
 - broken machinery
-
-Core lessons:
-
-- movement
-- jumping
-- shooting
-- doors
-- environmental hazards
+- layered 3D wreckage behind and in front of the gameplay plane
 
 ### Region 2 — Mycelium Sink / 菌海深层
 
@@ -125,6 +149,7 @@ Visual language:
 - damp caverns
 - luminous spores
 - purple/green bioluminescence
+- large background fungal structures and deep parallax
 
 ### Region 3 — Core Furnace / 熔核采掘带
 
@@ -140,6 +165,7 @@ Visual language:
 - heat
 - vertical shafts
 - moving mechanical hazards
+- large-scale machinery crossing visual depth layers
 
 ### Region 4 — Null Lab / 零域研究所
 
@@ -154,6 +180,7 @@ Visual language:
 - broken containment
 - holographic systems
 - biomechanical experiments
+- glass, emissive panels, and controlled depth staging
 
 ### Region 5 — Celestial Parasite / 天穹寄生塔
 
@@ -169,12 +196,21 @@ Visual language:
 - black/red biological structure
 - open planetary vistas
 - massive pulsating forms
+- dramatic 3D boss and environment presentation
 
-## 6. Player
+## 7. Player
 
 Working designation: **Vessel-7**
 
 Final identity and narrative details are intentionally unresolved.
+
+### Presentation
+
+- 3D skeletal character
+- slim and agile silhouette
+- integrated arm weapon
+- strongly readable side profile
+- animation optimized for side-on gameplay readability
 
 ### Initial Actions
 
@@ -190,7 +226,7 @@ The final list is not locked.
 1. Charge Beam
 2. Dash
 3. Air Dash or upgraded Dash
-4. Sphere Form
+4. Compact traversal form or equivalent
 5. Environmental Protection
 6. Phase Shift
 7. Advanced Beam upgrade
@@ -204,7 +240,25 @@ Every major ability should ideally support at least two of:
 - secrets
 - sequence breaking
 
-## 7. Initial Progression Concept
+## 8. 2.5D Gameplay Rule
+
+Normal gameplay takes place on a side-scrolling plane.
+
+The player may visually exist in full 3D, but normal movement is constrained to the gameplay plane.
+
+Depth is primarily used for:
+
+- composition
+- lighting
+- foreground/background staging
+- parallax
+- VFX
+- large boss presentation
+- short cinematic camera moves
+
+Free-roaming 3D exploration is outside current scope.
+
+## 9. Initial Progression Concept
 
 ```text
 Crash Cradle
@@ -232,13 +286,13 @@ This is a macro progression only.
 
 The final map should include loops, shortcuts, optional branches, and cross-region connections.
 
-## 8. First Vertical Slice
+## 10. First Vertical Slice
 
 The first playable milestone should contain approximately 20–30 minutes of content.
 
 Required:
 
-- player controller
+- 3D player controller constrained to 2.5D plane
 - shooting
 - damage/death
 - one simple enemy
@@ -248,6 +302,7 @@ Required:
 - one locked path demonstrating ability gating
 - basic HUD
 - save/checkpoint proof of concept
+- one lighting / VFX mood pass proving the visual direction
 
 Suggested location:
 
@@ -261,7 +316,7 @@ Suggested first upgrade:
 
 **Charge Beam** or **Dash**, depending on which better proves the intended game feel.
 
-## 9. Boss Philosophy
+## 11. Boss Philosophy
 
 Bosses should test learned mechanics rather than rely on huge health pools.
 
@@ -272,12 +327,13 @@ Each major boss should:
 - reward movement mastery
 - have at least one meaningful phase transition
 - connect mechanically or narratively to its region
+- take advantage of 3D scale and presentation without sacrificing gameplay readability
 
 Candidate early boss:
 
 **Grief Root** — a fungal neural mass rooted into industrial machinery.
 
-## 10. Failure Conditions to Avoid
+## 12. Failure Conditions to Avoid
 
 Do not let the project become:
 
@@ -286,13 +342,16 @@ Do not let the project become:
 - a corridor shooter with token backtracking
 - a collection of abilities that only act as colored keys
 - excessively large for a first release
+- visually ambitious enough to require AAA production values
+- a free-roaming 3D game
 
-## 11. Current Design Status
+## 13. Current Design Status
 
 Locked:
 
 - Godot 4
-- 2D
+- stylized 3D rendering
+- 2.5D side-scrolling gameplay
 - GDScript
 - Metroidvania structure
 - science-fiction / biomechanical fungal theme
@@ -301,10 +360,11 @@ Locked:
 
 Not yet locked:
 
-- protagonist appearance
+- protagonist final appearance
 - exact narrative
 - final ability order
 - map topology
 - final boss roster
-- art production method
-- pixel art vs high-resolution 2D presentation
+- exact 3D asset production pipeline
+- camera focal length / framing
+- environment modular kit specifications
