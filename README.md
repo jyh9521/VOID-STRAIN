@@ -1,6 +1,6 @@
 # VOID STRAIN / 虚空菌株
 
-A 2D science-fiction Metroidvania built with Godot 4.
+A 2.5D science-fiction Metroidvania built with Godot 4.
 
 ## Project Goal
 
@@ -22,11 +22,29 @@ Target scope for the first complete release:
 - 6–8 traversal/combat abilities
 - Windows first
 
+## Visual Direction
+
+VOID STRAIN uses **stylized 3D assets with 2.5D gameplay**.
+
+The game world, characters, enemies, bosses, and environments are rendered in 3D, while player traversal remains constrained to a side-scrolling gameplay plane.
+
+The intended look is:
+
+- stylized rather than photorealistic
+- strong silhouettes
+- atmospheric lighting
+- fog, particles, emissive materials, and shaders
+- biomechanical industrial ruins
+- restrained color palettes with high-contrast accents
+
+The visual target is closer to a polished AA / high-end indie 2.5D game than retro pixel art.
+
 ## Engine
 
 - Godot 4.x stable
 - GDScript
-- 2D
+- 3D rendering
+- 2.5D side-scrolling gameplay
 
 ## Development Model
 
@@ -39,4 +57,3 @@ Design documents live in [docs/](docs/).
 ## Current Status
 
 Pre-production / project bootstrap.
-
