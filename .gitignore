@@ -1,0 +1,15 @@
+# Godot 4+ specific ignores
+.godot/
+
+# Godot export presets may contain local/export configuration
+/export.cfg
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs / temporary files
+*.log
+*.tmp
