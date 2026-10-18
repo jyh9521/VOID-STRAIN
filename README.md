@@ -1,59 +1,47 @@
 # VOID STRAIN / 虚空菌株
 
-A 2.5D science-fiction Metroidvania built with Godot 4.
+使用 Godot 4 与 GDScript 开发的科幻银河恶魔城项目。画面采用风格化 3D，核心移动限制在横向卷轴平面，呈现 2.5D 探索与战斗。
 
-## Project Goal
+## 当前状态
 
-Create a compact, polished Metroid-like game focused on:
+本仓库处于**前期设计与工程初始化阶段**，目前包含设计文档和开发约定，尚未提交 Godot 工程、可运行场景或游戏发行包。
 
-- solitary exploration
-- ability-gated progression
-- interconnected level design
-- responsive movement and shooting
-- environmental storytelling
-- biomechanical / fungal science-fiction horror
+开发顺序与里程碑见[路线图](docs/ROADMAP.md)。下列内容是设计目标，不代表已经实现。
 
-Target scope for the first complete release:
+## 设计方向
 
-- 3–5 hours
-- 5 major regions
-- 5 bosses
-- 12–18 regular enemy types
-- 6–8 traversal/combat abilities
-- Windows first
+- 以独行探索、互联地图和能力门槛推进流程。
+- 强调响应明确的移动与射击，以及少对白的环境叙事。
+- 场景围绕生物机械、真菌侵蚀与工业遗迹展开。
+- 角色和环境使用 3D 资产，以轮廓、灯光、雾、粒子和自发光建立氛围，而非复古像素风。
+- 世界允许前后景深度；普通角色移动保持在 X/Y 游戏平面，不扩展为自由 3D 探索。
 
-## Visual Direction
+## 首个完整版本的目标规模
 
-VOID STRAIN uses **stylized 3D assets with 2.5D gameplay**.
+| 项目 | 规划 |
+| --- | --- |
+| 流程 | 约 3–5 小时 |
+| 主要区域 / Boss | 5 个区域 / 5 个 Boss |
+| 普通敌人 | 12–18 类 |
+| 移动与战斗能力 | 6–8 项 |
+| 首发平台 | Windows |
 
-The game world, characters, enemies, bosses, and environments are rendered in 3D, while player traversal remains constrained to a side-scrolling gameplay plane.
+范围以[游戏设计文档](docs/GAME_DESIGN.md)为准，不包含开放世界、程序生成、多人与在线服务计划。
 
-The intended look is:
+## 技术与开发
 
-- stylized rather than photorealistic
-- strong silhouettes
-- atmospheric lighting
-- fog, particles, emissive materials, and shaders
-- biomechanical industrial ruins
-- restrained color palettes with high-contrast accents
+引擎为 Godot 4.x stable，脚本语言为 GDScript；使用 3D 渲染、`CharacterBody3D` 玩家与 `Camera3D` 摄像机，优先采用 Godot 原生系统。
 
-The visual target is closer to a polished AA / high-end indie 2.5D game than retro pixel art.
+下一阶段先建立 Godot 工程、输入动作和最小 3D 测试场景，再验证横向移动、跳跃与摄像机。当前仓库没有 `project.godot`，因此暂不存在可直接导入运行的项目入口。
 
-## Engine
+## 文档
 
-- Godot 4.x stable
-- GDScript
-- 3D rendering
-- 2.5D side-scrolling gameplay
+- [游戏设计](docs/GAME_DESIGN.md)
+- [开发路线](docs/ROADMAP.md)
+- [开发约定](AGENTS.md)
 
-## Development Model
+## 参与开发
 
-This project is designed for AI-assisted development with Codex.
+先阅读设计文档与开发约定，按里程碑完成最小可验证变更。玩家、伤害、能力与房间系统保持模块化；游戏逻辑不绑定到动画片段。新增代码后检查 GDScript、场景引用与 Godot 无头验证，实机表现单独验收。
 
-The repository-level instructions for coding agents are in [AGENTS.md](AGENTS.md).
-
-Design documents live in [docs/](docs/).
-
-## Current Status
-
-Pre-production / project bootstrap.
+当前状态以本仓库实际提交的文件与路线图为准。
